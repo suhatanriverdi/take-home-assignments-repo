@@ -13,6 +13,21 @@ const initialChoicesState = {
 };
 
 export default function App() {
+  // Time Remaining
+  let interval;
+  const [timeLeft, setTimeLeft] = useState(5);
+  const updateTimeLeft = () => {
+    if (timeLeft > 0) {
+      setTimeLeft(timeLeft - 1);
+    } else {
+      clearInterval(interval);
+    }
+  };
+
+  useEffect(() => {
+    interval = setInterval(updateTimeLeft, 1000);
+  }, [timeLeft]);
+
   // Questions & Answers State
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState({});
@@ -82,7 +97,7 @@ export default function App() {
         (userAnswers[currentQuestionIndex] ===
           questions[currentQuestionIndex].answer)
     );
-    // 
+    //
     resetChoicesState();
   };
 
@@ -106,6 +121,7 @@ export default function App() {
       ) : (
         <>
           <h1 className="font-bold text-4xl my-10">Quiz App</h1>
+          <h2 className="font-bold text-2xl">Time Left: {timeLeft}</h2>
           <div className="flex flex-col justify-center items-center h-[400px] w-[600px] bg-orange-200 rounded-lg p-5">
             {currentQuestionIndex === 10 ? (
               <ScoreTable
@@ -119,6 +135,7 @@ export default function App() {
                 currentQuestionIndex={currentQuestionIndex}
                 handleSelection={handleSelection}
                 choiceStatus={choiceStatus}
+                handleTimeLeft={updateTimeLeft}
               />
             )}
           </div>
