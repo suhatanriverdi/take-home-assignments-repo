@@ -6,7 +6,7 @@ export default function SelectionsSection({
 }) {
   return (
     <>
-      <div className={`${canClick && "bg-slate-300"} w-fit rounded-lg m-1 px-3 py-1`}>
+      <div className={`${canClick && "bg-slate-300"} ${choiceStatus["A"] && "border-2 border-blue-500"} w-fit rounded-lg m-1 px-3 py-1`}>
         <input
           type="radio"
           name="choice"
@@ -19,7 +19,7 @@ export default function SelectionsSection({
         <label className={`${canClick && "text-slate-400"}`} htmlFor="A"> A) {choices.A}</label>
       </div>
 
-      <div className={`${canClick && "bg-slate-300"} w-fit rounded-lg m-1 px-3 py-1`}>
+      <div className={`${canClick && "bg-slate-300"} ${choiceStatus["B"] && "border-2 border-blue-500"} w-fit rounded-lg m-1 px-3 py-1`}>
         <input
           type="radio"
           name="choice"
@@ -32,7 +32,7 @@ export default function SelectionsSection({
         <label className={`${canClick && "text-slate-400"}`} htmlFor="B"> B) {choices.B}</label>
       </div>
 
-      <div className={`${canClick && "bg-slate-300"} w-fit rounded-lg m-1 px-3 py-1`}>
+      <div className={`${canClick && "bg-slate-300"} ${choiceStatus["C"] && "border-2 border-blue-500"} w-fit rounded-lg m-1 px-3 py-1`}>
         <input
           type="radio"
           name="choice"
@@ -45,7 +45,7 @@ export default function SelectionsSection({
         <label className={`${canClick && "text-slate-400"}`} htmlFor="C"> C) {choices.C}</label>
       </div>
 
-      <div className={`${canClick && "bg-slate-300"} w-fit rounded-lg m-1 px-3 py-1`}>
+      <div className={`${canClick && "bg-slate-300"} ${choiceStatus["D"] && "border-2 border-blue-500"} w-fit rounded-lg m-1 px-3 py-1`}>
         <input
           type="radio"
           name="choice"

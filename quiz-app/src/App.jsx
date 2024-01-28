@@ -14,7 +14,7 @@ const initialChoicesState = {
 export default function App() {
   // Time Remaining
   const intervalHandleRef = useRef();
-  const [timeLeft, setTimeLeft] = useState(30);
+  const [timeLeft, setTimeLeft] = useState(20);
 
   // Update time left
   const updateTimeLeft = () => {
@@ -35,7 +35,7 @@ export default function App() {
 
   const resetCountDownTimer = () => {
     stopCountDownTimer();
-    setTimeLeft(30);
+    setTimeLeft(20);
     intervalHandleRef.current = setInterval(updateTimeLeft, 1000);
   };
 
@@ -158,7 +158,7 @@ export default function App() {
               Quiz Completed!
             </h2>
           )}
-          <div className="flex flex-col justify-center items-center h-[400px] w-[600px] bg-orange-200 rounded-lg p-5">
+          <div className="flex flex-col justify-center items-center h-[400px] w-[600px] bg-orange-200 rounded-lg shadow-xl">
             {currentQuestionIndex === 10 ? (
               <ScoreTable
                 questions={questions}
