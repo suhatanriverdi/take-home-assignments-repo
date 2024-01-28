@@ -178,13 +178,13 @@ export default function App() {
           {currentQuestionIndex === 10 ? (
             <button
               onClick={handleResetBtn}
-              className="bg-green-300 font-medium h-10 w-40 rounded-lg mt-10">
+              className="shadow-lg bg-green-300 font-medium h-10 w-40 rounded-lg mt-10">
               Reset Quiz
             </button>
           ) : (
             <button
               onClick={handleNextBtn}
-              className="bg-blue-300 font-medium h-10 w-40 rounded-lg mt-10">
+              className="shadow-lg bg-blue-300 font-medium h-10 w-40 rounded-lg mt-10">
               Next Question
             </button>
           )}
