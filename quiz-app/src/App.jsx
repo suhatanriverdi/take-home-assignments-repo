@@ -14,14 +14,13 @@ const initialChoicesState = {
 export default function App() {
   // Time Remaining
   const intervalHandleRef = useRef();
-  const [timeLeft, setTimeLeft] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(30);
 
   // Update time left
   const updateTimeLeft = () => {
     if (timeLeft > 0) {
       setTimeLeft(timeLeft - 1);
     } else if (timeLeft === 0) {
-      stopCountDownTimer();
       handleNextBtn();
     }
   };
@@ -36,7 +35,7 @@ export default function App() {
 
   const resetCountDownTimer = () => {
     stopCountDownTimer();
-    setTimeLeft(0);
+    setTimeLeft(30);
     intervalHandleRef.current = setInterval(updateTimeLeft, 1000);
   };
 
@@ -128,7 +127,6 @@ export default function App() {
     resetChoicesState();
     // Resets countDownTimer for the next question
     resetCountDownTimer();
-    stopCountDownTimer();
   };
 
   const handleResetBtn = () => {
