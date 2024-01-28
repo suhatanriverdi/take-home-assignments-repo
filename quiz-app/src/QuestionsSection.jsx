@@ -5,11 +5,11 @@ export default function QuestionsSection({
   currentQuestionIndex,
   handleSelection,
   choiceStatus,
-  handleTimeLeft
+  canClick
 }) {
 
   return (
-    <div className="flex flex-col text-center h-[300px] w-[500px] bg-green-100 rounded-lg p-5">
+    <div className="flex flex-col text-center h-[340px] w-[500px] bg-green-100 rounded-lg p-5">
       <h1 className="text-xl font-bold text-cyan-800 underline mb-5">
         Question {currentQuestionIndex + 1}
       </h1>
@@ -19,6 +19,7 @@ export default function QuestionsSection({
         choiceStatus={choiceStatus}
         choices={currentQuestion.choices}
         onHandleSelection={(e) => handleSelection(e)}
+        canClick={canClick}
       />
     </div>
   );

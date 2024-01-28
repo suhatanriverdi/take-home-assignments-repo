@@ -2,55 +2,60 @@ export default function SelectionsSection({
   choiceStatus,
   choices,
   onHandleSelection,
+  canClick
 }) {
   return (
     <>
-      <div>
+      <div className={`${canClick && "bg-slate-300"} w-fit rounded-lg m-1 px-3 py-1`}>
         <input
           type="radio"
           name="choice"
           id="A"
           value="A"
+          disabled={canClick}
           checked={choiceStatus["A"]}
           onChange={onHandleSelection}
         />
-        <label htmlFor="A"> A: {choices.A}</label>
+        <label className={`${canClick && "text-slate-400"}`} htmlFor="A"> A) {choices.A}</label>
       </div>
 
-      <div>
+      <div className={`${canClick && "bg-slate-300"} w-fit rounded-lg m-1 px-3 py-1`}>
         <input
           type="radio"
           name="choice"
           id="B"
           value="B"
+          disabled={canClick}
           checked={choiceStatus["B"]}
           onChange={onHandleSelection}
         />
-        <label htmlFor="B"> B: {choices.B}</label>
+        <label className={`${canClick && "text-slate-400"}`} htmlFor="B"> B) {choices.B}</label>
       </div>
 
-      <div>
+      <div className={`${canClick && "bg-slate-300"} w-fit rounded-lg m-1 px-3 py-1`}>
         <input
           type="radio"
           name="choice"
           id="C"
           value="C"
+          disabled={canClick}
           checked={choiceStatus["C"]}
           onChange={onHandleSelection}
         />
-        <label htmlFor="C"> C: {choices.C}</label>
+        <label className={`${canClick && "text-slate-400"}`} htmlFor="C"> C) {choices.C}</label>
       </div>
 
-      <div>
+      <div className={`${canClick && "bg-slate-300"} w-fit rounded-lg m-1 px-3 py-1`}>
         <input
           type="radio"
           name="choice"
           id="D"
           value="D"
+          disabled={canClick}
           checked={choiceStatus["D"]}
           onChange={onHandleSelection}
         />
-        <label htmlFor="D"> D: {choices.D}</label>
+        <label className={`${canClick && "text-slate-400"}`} htmlFor="D"> D) {choices.D}</label>
       </div>
     </>
   );
