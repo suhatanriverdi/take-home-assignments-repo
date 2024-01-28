@@ -132,7 +132,7 @@ export default function App() {
   };
 
   const handleResetBtn = () => {
-    // TODO refresh page
+    window.location.reload();
   };
 
   const handleUserAnswers = (e) => {
