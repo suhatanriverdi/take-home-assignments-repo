@@ -5,12 +5,38 @@ import ScoreTable from "./ScoreTable";
 import { useEffect } from "react";
 import { getRandomAnswer, URL } from "./utils";
 
+const initialChoicesState = {
+  A: false,
+  B: false,
+  C: false,
+  D: false,
+};
+
 export default function App() {
   // Questions & Answers State
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState({});
   const [questions, setQuestions] = useState([]);
   const [score, setScore] = useState(0);
+
+  // Choices State
+  const [choiceStatus, setChoiceStatus] = useState(initialChoicesState);
+  const handleSelection = (e) => {
+    const value = e.target.value;
+    setChoiceStatus({
+      A: false,
+      B: false,
+      C: false,
+      D: false,
+      [value]: true,
+    });
+    // To update score & user answers
+    handleUserAnswers(e);
+  };
+
+  const resetChoicesState = () => {
+    setChoiceStatus(initialChoicesState);
+  };
 
   // User's Choices
   const [userAnswers, setUserAnswers] = useState(Array(10).fill("-"));
@@ -50,7 +76,14 @@ export default function App() {
       setCurrentQuestion(questions[currentQuestionIndex + 1]);
     }
     // Update Score
-    setScore((oldScore) => (oldScore + (userAnswers[currentQuestionIndex] === questions[currentQuestionIndex].answer)));
+    setScore(
+      (oldScore) =>
+        oldScore +
+        (userAnswers[currentQuestionIndex] ===
+          questions[currentQuestionIndex].answer)
+    );
+    // 
+    resetChoicesState();
   };
 
   const handleResetBtn = () => {
@@ -84,7 +117,8 @@ export default function App() {
               <QuestionsSection
                 currentQuestion={currentQuestion}
                 currentQuestionIndex={currentQuestionIndex}
-                handleUserAnswers={handleUserAnswers}
+                handleSelection={handleSelection}
+                choiceStatus={choiceStatus}
               />
             )}
           </div>

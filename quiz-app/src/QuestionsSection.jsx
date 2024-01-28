@@ -3,7 +3,8 @@ import SelectionsSection from "./SelectionsSection";
 export default function QuestionsSection({
   currentQuestion,
   currentQuestionIndex,
-  handleUserAnswers
+  handleSelection,
+  choiceStatus
 }) {
   return (
     <div className="flex flex-col text-center h-[300px] w-[500px] bg-green-100 rounded-lg p-5">
@@ -12,7 +13,11 @@ export default function QuestionsSection({
       </h1>
       <h1 className="text-xl mb-5">{currentQuestion.question}</h1>
 
-      <SelectionsSection choices={currentQuestion.choices} handleSelection={(e) => handleUserAnswers(e)} />
+      <SelectionsSection
+        choiceStatus={choiceStatus}
+        choices={currentQuestion.choices}
+        onHandleSelection={(e) => handleSelection(e)}
+      />
     </div>
   );
 }

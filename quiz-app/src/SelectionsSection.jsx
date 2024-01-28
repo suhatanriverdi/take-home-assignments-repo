@@ -1,26 +1,57 @@
-export default function SelectionsSection({ choices, handleSelection }) {
+export default function SelectionsSection({
+  choiceStatus,
+  choices,
+  onHandleSelection,
+}) {
   return (
     <>
       <div>
-          <input type="radio" name="choice" id="A" value="A" checked={false} onChange={handleSelection} />
-          <label htmlFor="A"> A: {choices.A}</label>
-        </div>
+        <input
+          type="radio"
+          name="choice"
+          id="A"
+          value="A"
+          checked={choiceStatus["A"]}
+          onChange={onHandleSelection}
+        />
+        <label htmlFor="A"> A: {choices.A}</label>
+      </div>
 
-        <div>
-          <input type="radio" name="choice" id="B" value="B" checked={false} onChange={handleSelection} />
-          <label htmlFor="B"> B: {choices.B}</label>
-        </div>
+      <div>
+        <input
+          type="radio"
+          name="choice"
+          id="B"
+          value="B"
+          checked={choiceStatus["B"]}
+          onChange={onHandleSelection}
+        />
+        <label htmlFor="B"> B: {choices.B}</label>
+      </div>
 
-        <div>
-          <input type="radio" name="choice" id="C" value="C" checked={false} onChange={handleSelection} />
-          <label htmlFor="C"> C: {choices.C}</label>
-        </div>
+      <div>
+        <input
+          type="radio"
+          name="choice"
+          id="C"
+          value="C"
+          checked={choiceStatus["C"]}
+          onChange={onHandleSelection}
+        />
+        <label htmlFor="C"> C: {choices.C}</label>
+      </div>
 
-        <div>
-          <input type="radio" name="choice" id="D" value="D" checked={false} onChange={handleSelection} />
-          <label htmlFor="D"> D: {choices.D}</label>
-        </div>
+      <div>
+        <input
+          type="radio"
+          name="choice"
+          id="D"
+          value="D"
+          checked={choiceStatus["D"]}
+          onChange={onHandleSelection}
+        />
+        <label htmlFor="D"> D: {choices.D}</label>
+      </div>
     </>
-    
   );
 }
