@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import QuestionsSection from "./QuestionsSection";
 import Loading from "./Loading";
 import ScoreTable from "./ScoreTable";
-import { useEffect } from "react";
 import { getRandomAnswer, URL } from "./utils";
 
 const initialChoicesState = {
@@ -14,19 +13,31 @@ const initialChoicesState = {
 
 export default function App() {
   // Time Remaining
-  let interval;
-  const [timeLeft, setTimeLeft] = useState(5);
+  const intervalHandleRef = useRef(0);
+  const [timeLeft, setTimeLeft] = useState(30);
   const updateTimeLeft = () => {
     if (timeLeft > 0) {
       setTimeLeft(timeLeft - 1);
     } else {
-      clearInterval(interval);
+      clearInterval(intervalHandleRef.current);
     }
   };
 
+  const startCountDownTimer = () => {
+    intervalHandleRef.current = setInterval(updateTimeLeft, 1000);
+  }
+
   useEffect(() => {
-    interval = setInterval(updateTimeLeft, 1000);
-  }, [timeLeft]);
+    startCountDownTimer();
+    // Run on unmount
+    /*
+      The function we return from the useEffect hook
+      gets invoked when the component unmounts and can be used for cleanup purposes.
+    */
+    return () => {
+      clearInterval(intervalHandleRef.current);
+    };
+  });
 
   // Questions & Answers State
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
