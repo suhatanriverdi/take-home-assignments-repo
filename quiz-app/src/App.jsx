@@ -14,7 +14,7 @@ const initialChoicesState = {
 export default function App() {
   // Time Remaining
   const intervalHandleRef = useRef();
-  const [timeLeft, setTimeLeft] = useState(20);
+  const [timeLeft, setTimeLeft] = useState(30);
 
   // Update time left
   const updateTimeLeft = () => {
@@ -35,7 +35,7 @@ export default function App() {
 
   const resetCountDownTimer = () => {
     stopCountDownTimer();
-    setTimeLeft(20);
+    setTimeLeft(30);
     intervalHandleRef.current = setInterval(updateTimeLeft, 1000);
   };
 
