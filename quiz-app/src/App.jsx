@@ -13,15 +13,16 @@ const initialChoicesState = {
 
 export default function App() {
   // Time Remaining
-  const intervalHandleRef = useRef(0);
-  const [timeLeft, setTimeLeft] = useState(30);
+  const intervalHandleRef = useRef();
+  const [timeLeft, setTimeLeft] = useState(0);
 
   // Update time left
   const updateTimeLeft = () => {
     if (timeLeft > 0) {
       setTimeLeft(timeLeft - 1);
-    } else {
-      clearInterval(intervalHandleRef.current);
+    } else if (timeLeft === 0) {
+      stopCountDownTimer();
+      handleNextBtn();
     }
   };
 
@@ -35,13 +36,15 @@ export default function App() {
 
   const resetCountDownTimer = () => {
     stopCountDownTimer();
-    setTimeLeft(30);
+    setTimeLeft(0);
     intervalHandleRef.current = setInterval(updateTimeLeft, 1000);
   };
 
   useEffect(() => {
     // Start countdown timer
-    startCountDownTimer();
+    if (currentQuestionIndex !== 10) {
+      startCountDownTimer();
+    }
     /*
     The function we return from the useEffect hook
     gets invoked when the component unmounts and can be used for cleanup purposes.
@@ -124,11 +127,8 @@ export default function App() {
     // Resets multiple-choices state
     resetChoicesState();
     // Resets countDownTimer for the next question
-    if (currentQuestionIndex === 10) {
-      stopCountDownTimer();
-    } else {
-      resetCountDownTimer();
-    }
+    resetCountDownTimer();
+    stopCountDownTimer();
   };
 
   const handleResetBtn = () => {
@@ -173,7 +173,7 @@ export default function App() {
                 currentQuestionIndex={currentQuestionIndex}
                 handleSelection={handleSelection}
                 choiceStatus={choiceStatus}
-                canClick={timeLeft >= 20 ? true : false}
+                canClick={timeLeft > 20 ? true : false}
               />
             )}
           </div>
