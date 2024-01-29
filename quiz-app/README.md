@@ -1,8 +1,15 @@
-# React + Vite
+# React Quiz App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features:
+- Countdown Timer
+- 10 Questions
+- Reset Quiz
+- Score Table
 
-Currently, two official plugins are available:
+![Screenshot 2024-01-28 223555](https://github.com/shtanriverdi/take-home-assignments-repo/assets/36234545/906c07b6-7957-4bfc-a3ac-a368dd92cfb1)
+<hr/>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Screenshot 2024-01-28 223521](https://github.com/shtanriverdi/take-home-assignments-repo/assets/36234545/6d03b898-74f7-41ac-8b10-6048c39c32e4)
+<hr/>
+
+![Screenshot 2024-01-28 223501](https://github.com/shtanriverdi/take-home-assignments-repo/assets/36234545/2f1005f0-bd26-488d-b09c-0797f9300ff7)
